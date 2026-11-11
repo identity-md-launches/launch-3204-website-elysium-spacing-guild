@@ -1,0 +1,153 @@
+{
+  "budgetBytes": 8388608,
+  "addedOrModifiedFilesBytesExcludingThisReport": 1956862,
+  "reportAllowanceBytes": 8192,
+  "submissionUpperBoundBytes": 1965054,
+  "withinBudget": true,
+  "productionExportBytes": 812863,
+  "protectedFilesUnchanged": true,
+  "buildInputAndExportByteMatch": true,
+  "ignoreChange": "Exact review artifacts only; see artifacts/PATH_BUDGET.md",
+  "reviewPathBudgetBytes": 1032192,
+  "reviewPathLimitsPassed": true,
+  "submodules": 0,
+  "dependencyDirectoriesOrArchivesInSubmission": 0,
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 757
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 8250
+    },
+    {
+      "path": "README.md",
+      "bytes": 5234
+    },
+    {
+      "path": "artifacts/PATH_BUDGET.md",
+      "bytes": 1111
+    },
+    {
+      "path": "artifacts/browser-results.json",
+      "bytes": 6512
+    },
+    {
+      "path": "artifacts/contrast-results.json",
+      "bytes": 1390
+    },
+    {
+      "path": "artifacts/licenses/design-guidance.txt",
+      "bytes": 11964
+    },
+    {
+      "path": "artifacts/previews/desktop.jpg",
+      "bytes": 181010
+    },
+    {
+      "path": "artifacts/previews/mobile-focus.png",
+      "bytes": 289091
+    },
+    {
+      "path": "artifacts/previews/mobile.jpg",
+      "bytes": 53624
+    },
+    {
+      "path": "artifacts/taste-results.json",
+      "bytes": 3171
+    },
+    {
+      "path": "artifacts/validation.md",
+      "bytes": 13964
+    },
+    {
+      "path": "dist/assets/index-BOaLDYWO.js",
+      "bytes": 221018
+    },
+    {
+      "path": "dist/assets/index-UTsnDqMc.css",
+      "bytes": 3554
+    },
+    {
+      "path": "dist/assets/station-ANBOjL7B.webp",
+      "bytes": 199362
+    },
+    {
+      "path": "dist/assets/station-portrait-BGjWb2-N.webp",
+      "bytes": 169580
+    },
+    {
+      "path": "dist/assets/station-small-DWYjS-NX.webp",
+      "bytes": 77678
+    },
+    {
+      "path": "dist/favicon.svg",
+      "bytes": 333
+    },
+    {
+      "path": "dist/index.html",
+      "bytes": 1357
+    },
+    {
+      "path": "dist/licenses/space-grotesk.txt",
+      "bytes": 4401
+    },
+    {
+      "path": "dist/og.jpg",
+      "bytes": 113292
+    },
+    {
+      "path": "index.html",
+      "bytes": 1258
+    },
+    {
+      "path": "public/favicon.svg",
+      "bytes": 333
+    },
+    {
+      "path": "public/licenses/space-grotesk.txt",
+      "bytes": 4401
+    },
+    {
+      "path": "public/og.jpg",
+      "bytes": 113292
+    },
+    {
+      "path": "src/App.tsx",
+      "bytes": 1940
+    },
+    {
+      "path": "src/assets/station-portrait.webp",
+      "bytes": 169580
+    },
+    {
+      "path": "src/assets/station-small.webp",
+      "bytes": 77678
+    },
+    {
+      "path": "src/assets/station.webp",
+      "bytes": 199362
+    },
+    {
+      "path": "src/main.tsx",
+      "bytes": 236
+    },
+    {
+      "path": "src/styles.css",
+      "bytes": 4178
+    },
+    {
+      "path": "tests/app.test.tsx",
+      "bytes": 2212
+    },
+    {
+      "path": "tests/browser.mjs",
+      "bytes": 12623
+    },
+    {
+      "path": "tests/contrast.mjs",
+      "bytes": 3116
+    }
+  ]
+}

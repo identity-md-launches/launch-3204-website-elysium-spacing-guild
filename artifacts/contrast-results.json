@@ -1,0 +1,72 @@
+[
+  {
+    "viewport": "390x844",
+    "textRgb": [
+      249,
+      245,
+      236
+    ],
+    "minimumTextContrast": 18.6440792802949,
+    "glyphPixels": 981,
+    "iconContrast": 17.268645801533314,
+    "minimumFocusContrast": 11.876957948906023,
+    "focusPixels": 237
+  },
+  {
+    "viewport": "1440x900",
+    "textRgb": [
+      249,
+      245,
+      236
+    ],
+    "minimumTextContrast": 18.543189616592727,
+    "glyphPixels": 8168,
+    "iconContrast": 17.268645801533314,
+    "minimumFocusContrast": 11.876957948906023,
+    "focusPixels": 237
+  },
+  {
+    "viewport": "390x844-closer",
+    "textRgb": [
+      249,
+      245,
+      236
+    ],
+    "minimumTextContrast": 18.6440792802949,
+    "glyphPixels": 981,
+    "iconContrast": 17.268645801533314
+  },
+  {
+    "viewport": "1440x900-closer",
+    "textRgb": [
+      249,
+      245,
+      236
+    ],
+    "minimumTextContrast": 18.62086415889928,
+    "glyphPixels": 8168,
+    "iconContrast": 14.205485848378853
+  },
+  {
+    "viewport": "320x720-text-200",
+    "textRgb": [
+      249,
+      245,
+      236
+    ],
+    "minimumTextContrast": 13.39589156426429,
+    "glyphPixels": 6157,
+    "iconContrast": 17.268645801533314
+  },
+  {
+    "viewport": "390x844-text-200",
+    "textRgb": [
+      249,
+      245,
+      236
+    ],
+    "minimumTextContrast": 12.310017428465722,
+    "glyphPixels": 6157,
+    "iconContrast": 17.268645801533314
+  }
+]

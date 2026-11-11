@@ -1,101 +1,101 @@
-# Elysium Spacing Guild: design system
-
-Taken from the final source: `src/styles.css` (all tokens and component styles), `src/App.tsx`, `src/components/*.tsx`, `index.html`. If this file and the source ever disagree, the source wins. Update this file when you change it.
+# Elysium Guild
 
 ## Overview
 
-A one-page site for the Elysium Spacing Guild, a guild that trains spacers and plots burns between settled worlds. As the brief asks, the top of the page uses an inspiring space photograph as its background: NASA's 1984 photo of Bruce McCandless flying untethered above Earth (`src/assets/hero-*.webp`, public domain). The headline, "Untethered, we go further", comes from that image.
+The page is a single, full-viewport view of an orbital ring habitat above Earth. The only visible words are **elysium guild**. The station is the visual identity; there are no navigation sections, slogans, forms, cards, or footer. A circular plus/minus button lets visitors move closer to the station.
 
-The visual character is quiet and dark: a deep navy page, one amber accent kept for actions and highlights, and a geometric display face for headings. The page's main tool sits on the first screen at every width: the **Plot a jump** route planner. Under the hero the sections are Routes (map and station list), Disciplines, Sign the charter (a form that produces a downloadable charter) and Before you sign (FAQ). Nothing is sent to a server. Station positions are a fixed, documented snapshot, and transit times are computed from them.
-
-These rules apply to the whole system: one filled (amber) action per view, surfaces separated by tone instead of borders, section headings that pair a short title with one plain sentence, and no kicker labels or all-caps text.
+The existing React, TypeScript, and Vite stack is retained. The implementation lives in `src/App.tsx` and `src/styles.css`. This document describes that source, not a proposed system.
 
 ## Colors
 
-Defined in `src/styles.css:6-31` in `oklch()`. Components use **only the semantic tokens**. The primitives (`--ink-*`, `--amber-*`, `--red-300`) exist only to feed them.
+The source uses OKLCH throughout the interface. Primitives are defined at `src/styles.css:11`; components consume the semantic roles below. There is one dark theme.
 
-| Token | Value | Use |
+| Semantic token | Primitive / exact value | Role |
 | --- | --- | --- |
-| `--color-bg` | `--ink-950` `oklch(0.15 0.025 262)` | Page background, input fields, segmented-control track, photo fade target |
-| `--color-surface` | `--ink-900` `oklch(0.19 0.03 262)` | Planner panel, discipline tiles, map background, charter card |
-| `--color-surface-raised` | `--ink-850` `oklch(0.23 0.032 262)` | Selected segment/choice, hover fill of secondary buttons |
-| `--color-border` | `--ink-700` `oklch(0.38 0.035 262)` | Field and secondary-button outlines, list dividers, map orbits |
-| `--color-text` | `--ink-100` `oklch(0.96 0.008 262)` | Headings and body text |
-| `--color-text-secondary` | `--ink-300` `oklch(0.83 0.02 262)` | Lede, labels, metadata, notes, footer |
-| `--color-accent` | `--amber-400` `oklch(0.8 0.14 62)` | Primary button fill, selected outline, map route and Sun, logo ring |
-| `--color-accent-hover` | `--amber-300` `oklch(0.86 0.11 62)` | Primary button hover |
-| `--color-on-accent` | `--amber-950` `oklch(0.22 0.04 62)` | Text on amber |
-| `--color-focus` | `--amber-300` | 2px `:focus-visible` outline |
-| `--color-error` | `--red-300` `oklch(0.8 0.12 25)` | Inline field errors and invalid field borders |
+| `--color-bg` | `--ink-950`: `oklch(0.12 0.012 220)` | Page and loading background |
+| `--color-control` | `--ink-900`: `oklch(0.18 0.015 220)` | Opaque button surface |
+| `--color-control-hover` | `--ink-800`: `oklch(0.26 0.015 220)` | Hover and active button surface |
+| `--color-control-border` | `--ink-600`: `oklch(0.51 0.015 220)` | 1px button boundary |
+| `--color-text` | `--ivory-100`: `oklch(0.97 0.012 85)` | Name and button icon |
+| `--color-text-halo` | `--ink-950` | Dark halo behind enlarged lettering |
+| `--color-focus` | `--gold-300`: `oklch(0.85 0.09 85)` | Keyboard focus indicator |
 
-The page is dark only (`color-scheme: dark`). There is no light theme. The hero photo is faded into `--color-bg` with gradients in `.hero__media::after`. `index.html` sets `theme-color` to `#0b0f1a`, and the favicon (`public/favicon.svg`) and charter SVG (`src/lib/charter.ts`) use hex equivalents, because a standalone file cannot read CSS tokens.
+The artwork supplies its own gold, green, and blue colors. The favicon is a separate SVG with a dark `#030708` tile, `#e6cd90` ring, and `#faf4e9` front edge. The browser theme color is `#030708`.
+
+Text-over-image and focus contrast were measured from rendered pixels, including the text halo. Measurements and their limitations are in [the validation record](artifacts/validation.md). In forced-colors mode, the title uses `Canvas`/`CanvasText`, the button border uses `ButtonText`, and the focus outline uses `Highlight`.
 
 ## Typography
 
-- **Families (2):** `--font-display` is Space Grotesk Variable, bundled locally through `@fontsource-variable/space-grotesk` (`src/main.tsx` imports `wght.css`, woff2 files in `dist/assets/`). It is used for headings, buttons, stat values and FAQ summaries. `--font-body` is the system UI sans stack, used for everything else.
-- **Weights (2):** `--weight-regular` 400 for body text, `--weight-strong` 600 for headings, labels, buttons and selected states.
-- **Sizes (5):**
+One family, one weight, one display size token:
 
-| Token | Value | Roles |
-| --- | --- | --- |
-| `--text-sm` | 0.875rem / 14px | Labels, legends, metadata, notes, field errors, footer, map labels |
-| `--text-base` | 1rem / 16px | Body text, inputs and selects (16px stops iOS zoom), hero lede below 40rem |
-| `--text-lg` | 1.25rem / 20px | h3, planner title, stat values, FAQ summaries, section intros, hero lede from 40rem |
-| `--text-xl` | clamp(1.75rem → 2.25rem) | h2 section headings |
-| `--text-display` | clamp(2.5rem → 4.5rem) | The single h1 |
+- **Family:** `--font-display: 'Space Grotesk Variable', 'Arial', sans-serif`.
+- **Local font:** the Latin WOFF2 from the existing `@fontsource-variable/space-grotesk` dependency. `src/styles.css:1` declares the 300–700 weight range with `font-display: swap`; the page uses weight **400** only.
+- **Size:** `--text-display: clamp(2.5rem, 6.25vw, 6rem)`: 40px at 390 wide, 90px at 1440, and a 96px cap with normal browser text settings.
+- **Line height:** 1.1; **tracking:** -0.055em; lowercase content is stored as lowercase rather than transformed.
+- **Wrapping:** centered, balanced, and allowed to wrap between the two words. No clipping, truncation, or forced single line.
+- **Halo:** `0 0 2px var(--color-text-halo), 0 2px 12px var(--color-text-halo)`. It protects lettering when enlarged text overlaps the bright station rim.
+- Text remains selectable. Selection uses the ivory background and dark foreground tokens.
 
-- **Line height:** h1 1.02, h2 1.1, h3 1.2, body 1.55, lede and section intros 1.45.
-- **Letter spacing:** h1 -0.035em, h2 -0.02em, otherwise natural. Nothing uses uppercase.
-- **Wrapping:** headings use `text-wrap: balance` and paragraphs use `text-wrap: pretty`. FAQ answers are capped at 65ch and section intros at 40rem. Stat values use `white-space: nowrap` and `tabular-nums`, so a value like "8 days 15 h" never splits. "0.3 g" values use `.segmented__value { white-space: nowrap }`. Names in the charter card wrap with `overflow-wrap: anywhere`. Nothing is truncated.
+The font loaded successfully in the Chromium checks. Its SIL Open Font License is in `public/licenses/space-grotesk.txt` and is included in the export.
 
 ## Layout
 
-- **Spacing scale:** `--space-1`…`--space-8` = 4, 8, 12, 16, 24, 32, 48, 80px. Gaps inside a group are 8–16px and gaps between groups are 24px or more.
-- **Gutter:** `--gutter: clamp(1rem, 0.6rem + 2vw, 2.5rem)`. Content width: `--content-max: 75rem`, centered.
-- **Sections:** `.section` has 80px top padding. `.section__head` is the title and intro pair (max 40rem, 32px below).
-- **Breakpoints** (in rem, chosen where the content stops fitting):
-  - `< 40rem`: in the planner, From and To stack, with the swap button beside both (`grid-template-areas: 'from swap' 'to swap'`), so long station names never clip. The hero lede is 16px. The photo is a band at the top of the hero (`.hero__media`, `inset-block-start: 3rem`, height `min(100vw, 24rem)`) that fades to the page color. The headline starts at `min(44vw, 16rem) + 3rem`.
-  - `≥ 40rem`: From, swap and To sit in one row, the swap arrows turn sideways, and the lede is 20px.
-  - `≥ 48rem`: section links (Routes, Disciplines, Questions) appear in the header.
-  - `≥ 60rem`: the hero is `min(100svh, 62rem)` tall and centered vertically. The photo fills the right 60% (`inset: 0 0 0 40%`) with a fade on its left edge, the copy and planner sit in a 28rem left column over the dark field, Routes becomes map plus list in two columns (the map is sticky), and Join becomes form plus charter in two columns.
-- **Measured first screen** (Chromium, see `artifacts/validation.md`): the **Plot route** button's bottom edge is at 769px on 320×844, 804px on 390×844, 819px on 768×844 and 717px on 1440×900. There was no horizontal overflow at any of these widths.
-- Uses logical properties (`inset-inline`, `padding-inline`, `margin-inline-end`, `border-block-*`).
+`.scene` is a centered CSS grid with `min-block-size: 100svh` and a `100vh` fallback. Its 7rem block padding reserves room for the name and control without fixing the text container's height. The full-bleed image is in an independently clipped, non-interactive background layer. Only the media is clipped.
+
+`--space-edge: clamp(24px, 3.125vw, 48px)` sets the horizontal margins and control inset. Physical pixel endpoints keep the margins from consuming the viewport when the reader enlarges text. Safe-area inset values are included. The button uses logical inline positioning, so it mirrors in RTL.
+
+The single composition breakpoint is an **aspect ratio of 3/4**, shared by `<picture>` and CSS:
+
+- At or below 3/4, use the dedicated 1024 × 1536 portrait artwork and center the name vertically.
+- Above 3/4, select the 960 × 640 or 1536 × 1024 landscape artwork through `srcset`. The name has 0.8em bottom padding to position its lettering inside the ring's opening.
+- Images fill the viewport with `object-fit: cover` and centered cropping. Cropping at narrow/tall and very wide sizes is intentional; the ring remains recognizable.
+- The 48 × 48px control sits at the bottom trailing corner, within the first screen at 390 wide. It scales with text settings through its 3rem size.
+
+The source uses `fetchPriority="high"` for the artwork, native responsive image selection, and no external image or font requests. Checked widths: 320, 390, 768, 844 in landscape, 1440, and 1920. Two-hundred-percent text enlargement was checked at 320 and 390; this is separate from browser-native zoom.
 
 ## Elevation & Depth
 
-The interface is mostly flat and uses tone for depth: `--color-bg`, then `--color-surface`, then `--color-surface-raised`. Two exceptions:
-- `.planner` has the only drop shadow (`0 0 0 1px oklch(1 0 0 / 0.08), 0 24px 48px oklch(0 0 0 / 0.35)`), which lifts the main tool off the photo.
-- `.charter` (the signed charter) uses an inset 1px amber ring (`box-shadow: inset 0 0 0 1px var(--color-accent)`) to mark the result. The empty state drops it.
+The scene uses `isolation: isolate`; the background frame is at z-index -1 and the title and button sit above it. The image overlay is an sRGB vertical gradient: black at 8% opacity at the top, transparent from 26% to 72%, and black at 42% at the bottom. It keeps the lower control area calm without flattening the ring.
 
-No surface has both a border and a shadow, and no card sits inside another card. The header is `position: absolute` over the hero, not sticky.
+There are no cards, elevated panels, box shadows, or image frames. The title halo is a legibility treatment, not a surface.
 
 ## Shapes
 
-`--radius-sm` 8px (segment options, skip link), `--radius-md` 12px (buttons, fields, track, choice options), `--radius-lg` 20px (planner, tiles, map, charter card). Lists (stations, FAQ) use 1px `--color-border` dividers between rows instead of boxes.
+The only interface shape is the circular button: 50% radius, a 1px border, and an opaque fill. The plus/minus artwork is a 24px SVG with a consistent 1.5px round stroke, using `currentColor`. The circular form echoes the orbital ring.
+
+Keyboard focus uses a **3px outline with -6px offset**, inside the opaque button. Keeping the ring on that known surface preserves contrast over bright parts of Earth.
 
 ## Components
 
-| Component | Source | Use and states |
-| --- | --- | --- |
-| Button | `.button`, `.button--secondary`, `.button--small` in `src/styles.css` | Primary is amber-filled, with one per view (Plot route, Sign the charter, Join). Secondary is outlined (Plot a jump rows, Download charter). Min height is 48px (44px small). States: hover (only under `hover: hover`), `:active` scale 0.96 (turned off under reduced motion), and the 2px focus ring. Transitions name their properties and run 150ms on `--ease-out`. |
-| Icon button | `.icon-button` | 44×44 outlined square. Needs `aria-label` (the swap button uses "Swap origin and destination"), and its SVG is `aria-hidden`. |
-| Field | `.field` + `label` + `input[type=text]` / `select` | Visible label above the control. Error state: `aria-invalid="true"` gives a red border, and `.field-error` text is linked through `aria-describedby`. Validation runs on submit and focus moves to the first invalid field. |
-| Segmented radio | `fieldset.segmented` | Native radios layered invisibly over the labels, so arrow keys work. The checked option gets a raised fill and an amber ring. The focus ring is drawn on the option with `:has(input:focus-visible)`. |
-| Choice list | `fieldset.choice` | Visible native radios in bordered rows, two columns. The checked row gets an amber border. |
-| Route planner | `src/components/Planner.tsx` | The main action. It has an empty state, a result (route line, three stats, a burn note) and a same-station error. The result sits in a `role="status"` region that is always present. |
-| Route map | `src/components/RouteMap.tsx` | SVG `role="img"` whose title names the plotted route. Orbits are drawn on a square-root scale, and the active stations and the dashed route turn amber. |
-| Station row | `.station` in `src/App.tsx` | Name, meta and summary, plus a secondary "Plot a jump" button that fills the planner's destination and moves focus to it. |
-| Charter form and card | `src/components/JoinForm.tsx`, `src/lib/charter.ts` | Has an empty state ("Your charter appears here"). On success, focus moves to the card heading and **Download charter** saves an SVG file built in the browser. |
-| FAQ | `.faq details` | Native `<details>`. A `+` or `−` marker shows its state. |
-| Skip link | `.skip-link` | The first element you can Tab to. It is hidden off-screen until focused. |
+### Station scene — `src/App.tsx`
+
+`App` renders one named `<main>`, one informative `<picture>`/`<img>`, one `<h1>`, and one native button. The artwork has descriptive alternative text. Labels and metadata add accessibility and share information without adding visible words.
+
+`.scene__frame`, `.scene__art`, and `.scene__name` are local composition patterns rather than a general component library. A future scene can reuse these classes with a matching portrait/landscape asset pair.
+
+### View control — `src/App.tsx:38`, `src/styles.css:108`
+
+- Accessible name: **View station closer**.
+- `aria-pressed` exposes the current state; `aria-controls` points to the artwork.
+- Overview: plus icon, artwork at scale 1.
+- Closer: minus icon, artwork at scale 1.22, transform origin 50% 48%.
+- A second activation returns to the overview. Escape also resets it; the Escape shortcut is announced only while closer mode is active.
+- Native Tab, Enter, and Space work. Focus stays on the control through state changes.
+- Hover is limited to devices that support hover. Hover and active states lighten the button.
+- Without reduced motion, artwork changes over 900ms with `cubic-bezier(0.2, 0, 0, 1)`; button background, press feedback, and icon opacity use 150ms. Press scale is 0.96.
+- With reduced motion, all changes are immediate. There is no autoplay, looping animation, or page-load entrance.
+- This is an in-page zoom, not browser full screen. There is no network operation, loading spinner, modal, saved state, or account flow.
 
 ## Do's and Don'ts
 
-- **Do** use semantic color tokens. Add a role token if one is missing, and never borrow `--color-border` for text.
-- **Do** keep to the five size tokens and two weights. A new heading level reuses `--text-lg` or `--text-xl`.
-- **Do** give each view exactly one amber-filled button. Peers use `.button--secondary`.
-- **Do** put directions and privacy notes next to the control they explain, the way `.join__privacy` sits under its submit button.
-- **Don't** add kicker labels above headings, uppercase text, em dashes or emoji to interface text.
-- **Don't** put a border and a shadow on the same surface, or nest tiles inside the planner.
-- **Don't** imply shared or live data. This is a static site, and any number it shows must be computed or stated as fixed.
-- **Adding a page section:** add a `<section className="section" id="…" aria-labelledby="…">` with a `.section__head` (an h2 plus one plain sentence). Build the content from `.button`, `.field` and surface tiles (`--color-surface`, `--radius-lg`, `--space-5` padding). Add a header link if it is a primary destination. Then run the probe and `npm test`.
+- Preserve the requested two visible words. Additional body copy, navigation, or sections would change this brief.
+- Reuse the semantic colors, the single type scale, and the view-control pattern.
+- Keep labels in accessible attributes for icon controls, and retain the native button.
+- Keep the name and control outside the clipped media layer.
+- Preserve portrait art direction and reduced-motion behavior when changing the artwork.
+- For another view in a future authorized extension, start with the existing scene classes, supply both image orientations, and repeat contrast checks after substituting the art.
+- Do not add wallets, counters, sound, or simulated live data to this static scene.
+
+## Guidance attribution
+
+Design review followed the supplied adaptation of Jakub Krehel's **Better Interface**, MIT, commit `267330e1adfc66a718fb65fa6918c1f06d0a689e`. Documentation organization follows the supplied adaptation of Paul Bakaus's **Impeccable**, Apache-2.0, commit `9d715cc4f5564a990ca8345abfdd5df6dc9b41c8`. Copyright and license notices are retained in [artifacts/licenses/design-guidance.txt](artifacts/licenses/design-guidance.txt).

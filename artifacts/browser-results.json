@@ -1,0 +1,288 @@
+{
+  "engine": "chromium",
+  "results": [
+    {
+      "name": "320x720: overview, artwork, only two words, first-screen action",
+      "passed": true,
+      "detail": {
+        "width": 320,
+        "height": 720,
+        "scrollWidth": 320,
+        "text": {
+          "x": 47.796875,
+          "y": 334,
+          "width": 224.40625,
+          "height": 51
+        },
+        "control": {
+          "x": 248,
+          "y": 648,
+          "width": 48,
+          "height": 48
+        },
+        "fontSize": "40px",
+        "image": "station-portrait-BGjWb2-N.webp"
+      }
+    },
+    {
+      "name": "320x720: closer view, second activation, and Escape",
+      "passed": true
+    },
+    {
+      "name": "320x720: 200% text enlargement",
+      "passed": true,
+      "detail": {
+        "width": 320,
+        "height": 720,
+        "scrollWidth": 320,
+        "text": {
+          "x": 27.390625,
+          "y": 265,
+          "width": 265.203125,
+          "height": 190
+        },
+        "control": {
+          "x": 200,
+          "y": 600,
+          "width": 96,
+          "height": 96
+        },
+        "fontSize": "80px",
+        "image": "station-portrait-BGjWb2-N.webp"
+      }
+    },
+    {
+      "name": "390x844: overview, artwork, only two words, first-screen action",
+      "passed": true,
+      "detail": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "text": {
+          "x": 82.796875,
+          "y": 396,
+          "width": 224.40625,
+          "height": 51
+        },
+        "control": {
+          "x": 318,
+          "y": 772,
+          "width": 48,
+          "height": 48
+        },
+        "fontSize": "40px",
+        "image": "station-portrait-BGjWb2-N.webp"
+      }
+    },
+    {
+      "name": "390x844: closer view, second activation, and Escape",
+      "passed": true
+    },
+    {
+      "name": "390x844: keyboard, focus, reduced motion",
+      "passed": true
+    },
+    {
+      "name": "390x844: axe accessibility scan",
+      "passed": true,
+      "detail": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ],
+        "passes": 16
+      }
+    },
+    {
+      "name": "390x844: artwork contrast capture",
+      "passed": true
+    },
+    {
+      "name": "390x844: 200% text enlargement",
+      "passed": true,
+      "detail": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "text": {
+          "x": 62.390625,
+          "y": 327,
+          "width": 265.203125,
+          "height": 190
+        },
+        "control": {
+          "x": 270,
+          "y": 724,
+          "width": 96,
+          "height": 96
+        },
+        "fontSize": "80px",
+        "image": "station-portrait-BGjWb2-N.webp"
+      }
+    },
+    {
+      "name": "390x844: RTL mirror",
+      "passed": true,
+      "detail": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "text": {
+          "x": 82.796875,
+          "y": 396,
+          "width": 224.40625,
+          "height": 51
+        },
+        "control": {
+          "x": 24,
+          "y": 772,
+          "width": 48,
+          "height": 48
+        },
+        "fontSize": "40px",
+        "image": "station-portrait-BGjWb2-N.webp"
+      }
+    },
+    {
+      "name": "390x844: forced colors",
+      "passed": true
+    },
+    {
+      "name": "768x1024: overview, artwork, only two words, first-screen action",
+      "passed": true,
+      "detail": {
+        "width": 768,
+        "height": 1024,
+        "scrollWidth": 768,
+        "text": {
+          "x": 249.65625,
+          "y": 480.59375,
+          "width": 268.6875,
+          "height": 61
+        },
+        "control": {
+          "x": 696,
+          "y": 952,
+          "width": 48,
+          "height": 48
+        },
+        "fontSize": "48px",
+        "image": "station-portrait-BGjWb2-N.webp"
+      }
+    },
+    {
+      "name": "768x1024: closer view, second activation, and Escape",
+      "passed": true
+    },
+    {
+      "name": "1440x900: overview, artwork, only two words, first-screen action",
+      "passed": true,
+      "detail": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "text": {
+          "x": 467.671875,
+          "y": 356.5,
+          "width": 504.65625,
+          "height": 115
+        },
+        "control": {
+          "x": 1347,
+          "y": 807,
+          "width": 48,
+          "height": 48
+        },
+        "fontSize": "90px",
+        "image": "station-ANBOjL7B.webp"
+      }
+    },
+    {
+      "name": "1440x900: closer view, second activation, and Escape",
+      "passed": true
+    },
+    {
+      "name": "1440x900: keyboard, focus, reduced motion",
+      "passed": true
+    },
+    {
+      "name": "1440x900: axe accessibility scan",
+      "passed": true,
+      "detail": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ],
+        "passes": 16
+      }
+    },
+    {
+      "name": "1440x900: artwork contrast capture",
+      "passed": true
+    },
+    {
+      "name": "1920x1080: overview, artwork, only two words, first-screen action",
+      "passed": true,
+      "detail": {
+        "width": 1920,
+        "height": 1080,
+        "scrollWidth": 1920,
+        "text": {
+          "x": 687.8125,
+          "y": 439.796875,
+          "width": 544.375,
+          "height": 122
+        },
+        "control": {
+          "x": 1824,
+          "y": 984,
+          "width": 48,
+          "height": 48
+        },
+        "fontSize": "96px",
+        "image": "station-ANBOjL7B.webp"
+      }
+    },
+    {
+      "name": "1920x1080: closer view, second activation, and Escape",
+      "passed": true
+    },
+    {
+      "name": "844x390: overview, artwork, only two words, first-screen action",
+      "passed": true,
+      "detail": {
+        "width": 844,
+        "height": 390,
+        "scrollWidth": 844,
+        "text": {
+          "x": 273.84375,
+          "y": 139.890625,
+          "width": 296.296875,
+          "height": 67
+        },
+        "control": {
+          "x": 769.625,
+          "y": 315.625,
+          "width": 48,
+          "height": 48
+        },
+        "fontSize": "52.75px",
+        "image": "station-small-DWYjS-NX.webp"
+      }
+    },
+    {
+      "name": "844x390: closer view, second activation, and Escape",
+      "passed": true
+    },
+    {
+      "name": "Console, resources, and offline dependencies",
+      "passed": true
+    }
+  ]
+}

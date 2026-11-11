@@ -12,3 +12,22 @@ coverage/
 test/scratch/
 *.log
 .DS_Store
+
+# Exact review deliverables only; per-path limits: artifacts/PATH_BUDGET.md
+# Combined allocation (including this ignore file): 1 MiB.
+!/artifacts/
+/artifacts/*
+!/artifacts/PATH_BUDGET.md
+!/artifacts/validation.md
+!/artifacts/browser-results.json
+!/artifacts/contrast-results.json
+!/artifacts/taste-results.json
+!/artifacts/submission-audit.json
+!/artifacts/licenses/
+/artifacts/licenses/*
+!/artifacts/licenses/design-guidance.txt
+!/artifacts/previews/
+/artifacts/previews/*
+!/artifacts/previews/desktop.jpg
+!/artifacts/previews/mobile.jpg
+!/artifacts/previews/mobile-focus.png
