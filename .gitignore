@@ -1,0 +1,14 @@
+# dependencies and caches, at every nesting level
+node_modules/
+**/node_modules/
+.npm/
+**/.npm/
+.cache/
+**/.cache/
+.vite/
+**/.vite/
+*.tgz
+coverage/
+test/scratch/
+*.log
+.DS_Store
